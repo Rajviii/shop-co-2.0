@@ -1,6 +1,6 @@
 'use client';
 
-import useSWR from 'swr';
+import { useSWR } from 'swr';
 import Image from 'next/image';
 
 const fetcher = (url) => fetch(url).then((res) => res.json());

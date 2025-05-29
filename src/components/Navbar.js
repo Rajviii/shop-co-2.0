@@ -54,9 +54,9 @@ export default function Navbar() {
         <div className="bg-black text-white flex items-center justify-center px-4 py-2 relative text-sm">
           <span>
             Sign up and get 20 percent off to your first order{' '}
-            <a href="#" className="underline font-semibold ml-1">
+            <span className="underline font-semibold ml-1 cursor-not-allowed text-gray-500">
               Sign Up Now
-            </a>
+            </span>
           </span>
           <button
             className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-lg"

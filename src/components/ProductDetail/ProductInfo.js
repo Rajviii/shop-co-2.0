@@ -4,7 +4,7 @@ import shirtImage from "../../assets/images/product09.png";
 import thumb1 from "../../assets/images/product09.png";
 import thumb2 from "../../assets/images/product009.png";
 import thumb3 from "../../assets/images/product0009.png";
-
+import Link from 'next/link';
 export default function ProductInfo() {
   const [size, setSize] = useState("Large");
 
@@ -18,18 +18,18 @@ return (
     <div className="px-6 py-10 max-w-screen-xl mx-auto">
         <nav className="text-sm text-gray-500 mb-8" aria-label="Breadcrumb">
             <ol className="list-reset flex">
-                <li>
-                    <a href="/" className="hover:underline">Home</a>
+                 <li>
+                    <Link href="/" className="hover:underline">Home</Link>
                     <span className="mx-2">{'>'}</span>
                 </li>
                 <li>
-                    <a href="#" className="hover:underline">Shop</a>
+                    <Link href="#" onClick={(e) => e.preventDefault()} className="hover:underline">Shop</Link>
                     <span className="mx-2">{'>'}</span>
                 </li>
                 <li>
-                    <a href="#" className="hover:underline">Men</a>
+                    <Link href="#" onClick={(e) => e.preventDefault()} className="hover:underline">Men</Link>
                     <span className="mx-2">{'>'}</span>
-                </li>
+                    </li>
                 <li className="text-black">Tshirt</li>
             </ol>
         </nav>
