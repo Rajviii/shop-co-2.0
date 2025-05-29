@@ -1,7 +1,7 @@
-'use client';
-import { useState, useRef, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { FiSearch, FiShoppingCart, FiUser, FiMenu, FiX } from 'react-icons/fi';
+"use client";
+import { useState, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
+import { FiSearch, FiShoppingCart, FiUser, FiMenu, FiX } from "react-icons/fi";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,19 +13,16 @@ export default function Navbar() {
 
   useEffect(() => {
     function handleClickOutside(event) {
-      if (
-        shopRef.current &&
-        !shopRef.current.contains(event.target)
-      ) {
+      if (shopRef.current && !shopRef.current.contains(event.target)) {
         setIsShopDropdownOpen(false);
         setIsMenDropdownOpen(false);
       }
     }
     if (isShopDropdownOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isShopDropdownOpen]);
 
@@ -33,13 +30,13 @@ export default function Navbar() {
     e.stopPropagation();
     setIsShopDropdownOpen(false);
     setIsMenDropdownOpen(false);
-    router.push('/men/tshirts');
+    router.push("/men/tshirts");
   };
 
   const handleCategoryClick = (e) => {
     e.stopPropagation();
     setIsShopDropdownOpen(false);
-    router.push('/casual');
+    router.push("/casual");
   };
 
   const [showTopBanner, setShowTopBanner] = useState(true);
@@ -53,7 +50,7 @@ export default function Navbar() {
       {showTopBanner && (
         <div className="bg-black text-white flex items-center justify-center px-4 py-2 relative text-sm">
           <span>
-            Sign up and get 20 percent off to your first order{' '}
+            Sign up and get 20 % off to your first order{" "}
             <span className="underline font-semibold ml-1 cursor-not-allowed text-gray-500">
               Sign Up Now
             </span>
@@ -62,7 +59,7 @@ export default function Navbar() {
             className="absolute right-4 top-1/2 -translate-y-1/2 text-white text-lg"
             aria-label="Close banner"
             onClick={() => setShowTopBanner(false)}
-            style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+            style={{ background: "none", border: "none", cursor: "pointer" }}
           >
             <FiX />
           </button>
@@ -71,7 +68,12 @@ export default function Navbar() {
       <nav className="bg-white shadow-md sticky top-0 z-50 px-6 py-4">
         <div className="flex justify-between items-center max-w-screen-xl mx-auto">
           <div className="flex items-center gap-6 w-full">
-            <div className="font-bold text-2xl text-black whitespace-nowrap">SHOP.CO</div>
+            <div
+              className="font-bold text-2xl text-black whitespace-nowrap cursor-pointer"
+              onClick={() => router.push("/")}
+            >
+              SHOP.CO
+            </div>
 
             <ul className="hidden md:flex gap-6 text-sm text-black whitespace-nowrap relative">
               <li
@@ -82,13 +84,19 @@ export default function Navbar() {
                 Shop
                 <span className="ml-1">
                   <svg
-                    className={`w-4 h-4 inline transition-transform ${isShopDropdownOpen ? 'rotate-180' : ''}`}
+                    className={`w-4 h-4 inline transition-transform ${
+                      isShopDropdownOpen ? "rotate-180" : ""
+                    }`}
                     fill="none"
                     stroke="currentColor"
                     strokeWidth="2"
                     viewBox="0 0 24 24"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </span>
                 {isShopDropdownOpen && (
@@ -102,13 +110,19 @@ export default function Navbar() {
                     >
                       Men
                       <svg
-                        className={`w-3 h-3 ml-2 transition-transform ${isMenDropdownOpen ? 'rotate-90' : ''}`}
+                        className={`w-3 h-3 ml-2 transition-transform ${
+                          isMenDropdownOpen ? "rotate-90" : ""
+                        }`}
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
                         viewBox="0 0 24 24"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 5l7 7-7 7"
+                        />
                       </svg>
                       {isMenDropdownOpen && (
                         <ul className="absolute left-full top-0 ml-2 bg-white shadow-lg rounded-md py-2 w-40 z-20">
@@ -121,8 +135,15 @@ export default function Navbar() {
                         </ul>
                       )}
                     </li>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Women</li>
-                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer" onClick={handleCategoryClick}>Category</li>
+                    <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      Women
+                    </li>
+                    <li
+                      className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                      onClick={handleCategoryClick}
+                    >
+                      Category
+                    </li>
                   </ul>
                 )}
               </li>
@@ -156,10 +177,19 @@ export default function Navbar() {
             <FiUser />
           </div>
         </div>
-        
+
         {isMenuOpen && (
-          <ul className="md:hidden mt-4 flex flex-col gap-4 text-black text-sm px-2">
-            <li>Shop</li>
+          <ul className="md:hidden mt-4 flex flex-col gap-2 text-black text-sm px-4">
+            <li className="font-semibold">Shop</li>
+            <ul className="ml-4 flex flex-col gap-1">
+              <li className="cursor-pointer" onClick={handleTShirtsClick}>
+                Men - T-shirts
+              </li>
+              <li className="cursor-pointer">Women</li>
+              <li className="cursor-pointer" onClick={handleCategoryClick}>
+                Category
+              </li>
+            </ul>
             <li>On Sale</li>
             <li>New Arrivals</li>
             <li>Brands</li>
